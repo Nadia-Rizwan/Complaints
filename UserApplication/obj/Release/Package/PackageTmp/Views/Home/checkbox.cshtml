@@ -1,0 +1,43 @@
+﻿@model UserApplication.Models.LanguageList
+@{
+    ViewBag.Title = "checkbox";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>checkbox</h2>
+
+@using (Html.BeginForm())
+{
+
+    <table>
+
+        @for (int i = 0; i < Model.languages.Count; i++)
+        {
+        <tr>
+            <td>
+
+                @Html.CheckBoxFor(x => x.languages[i].IsChecked, new { @class = "custom-checkbox" })
+                <label>@Model.languages[i].Progarmming_Language</label>
+                @Html.HiddenFor(x => x.languages[i].ID)
+                @Html.HiddenFor(x => x.languages[i].Progarmming_Language)
+
+
+
+
+            </td>
+
+        </tr>
+        }
+
+
+
+
+    </table>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+}

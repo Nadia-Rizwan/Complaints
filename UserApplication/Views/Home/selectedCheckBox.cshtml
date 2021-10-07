@@ -1,0 +1,28 @@
+﻿@model UserApplication.Models.Language
+
+@{
+    ViewBag.Title = "selectedCheckBox";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>selectedCheckBox</h2>
+
+
+    <h4>Language</h4>
+    <hr />
+    @foreach (var value in ViewBag.selected)
+    {
+        <tr>
+            <td>
+
+                @value.Progarmming_Language
+
+                <br>
+            </td>
+
+        </tr>
+    }
+
+<p>
+    @Html.ActionLink("Back to List", "checkbox")
+</p>

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "createpdf";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Email</h2>
+<a class="btn btn-md btn-primary ml-3" href="@Url.Action("Index", "Complaints")" tabindex="11">
+    <i class="fa fa-close"></i> Cancel
+</a>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+        if ('@ViewBag.Message' == 'Sent') {
+            alert('Mail has been sent successfully');
+        }
+    });
+
+    </script>
+}

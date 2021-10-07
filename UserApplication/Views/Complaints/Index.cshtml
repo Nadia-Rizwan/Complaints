@@ -1,0 +1,172 @@
+﻿@model IEnumerable<UserApplication.Models.Complaint>
+
+@{
+    ViewBag.Title = @UserApplication.Resource.Compliant;
+
+}
+@section styles {
+    <style>
+        td .btn-primary, .btn-danger {
+            padding: .175rem .55rem;
+        }
+
+        table {
+            table-layout: fixed;
+            font-size: 13px;
+        }
+    </style>
+}
+<div>
+    <div class="animated fadeIn">
+        <div class="card">
+
+            <div class="card-header">
+                <i class="fa fa-users"></i> فهرس
+                <div class="card-header-actions">
+                    <a class="btn btn-info" href="@Url.Action("Create", "Complaints")">
+                        <i class="fa fa-plus"></i> Create
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped  datatable">
+                        <thead>
+                            <tr>
+                                <th class="text-center">التاريخ</th>
+                                <th class="text-center">الهاتف</th>
+                                <th class="text-center">الاسم</th>
+                                <th class="text-center">يضاف بواسطة</th>
+                                <th class="text-center">الوقت المضاف</th>
+                                <th class="no-sort text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">@user.ComplaintDate.ToString("dd MMM yyyy ")</td>
+                                    <td class="text-center">@user.PhoneNumber</td>
+
+                                    <td class="text-center">@user.Name</td>
+
+
+
+                                    <td class="text-center">@user.AddedBy</td>
+
+                                    <td class="text-center">@user.AddedTime.ToString("dd MMM yyyy HH:mm")</td>
+
+
+
+
+                                    <td class="text-center">
+
+                                        <a class="btn btn-primary" title="Edit" href="@Url.Action("Edit", "Complaints", new { id = user.ID })">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-primary" title="Details" href="@Url.Action("Details", "Complaints", new { id = user.ID })">
+                                            <i class="fa fa-users"></i>
+                                        </a>
+                                        <a class="btn btn-danger" title="Delete" href="javascript:void(0)" onclick="Delete('@user.ID')">
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
+                                        <a class="btn btn-primary" title="Email" href="@Url.Action("SendEmailMethod", "Complaints", new { id = user.ID })">
+                                            <i class="">Email</i>
+                                        </a>
+
+                                    </td>
+
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+<script type="text/javascript">
+        function Delete(Id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: '@Url.Action("Delete", "Complaints")',
+                        type: 'post',
+                        contentType: 'application/x-www-form-urlencoded',
+                        data: { "Id": Id },
+                        success: function (data, textStatus, jQxhr) {
+                            Swal.fire({
+                                type: 'success',
+                                title: 'Deleted!',
+                                text: 'Complaint Deleted Successfully.'
+                            }).then((result) => {
+                                if (result.value) {
+                                    location.reload();
+                                }
+                            });
+
+                        },
+                        error: function (jqXhr, textStatus, errorThrown) {
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Some error occured',
+                                text: 'Please try again'
+                            });
+                        }
+                    });
+
+                }
+            })
+        }
+
+</script>
+<script type="text/javascript">
+    @if(TempData["Message"] != null) {  <text>
+
+            $(document).ready(function () {
+
+                swal.fire({
+                    title: "Mail",
+                    text: "mail has been sent Successfully",
+                    type: "success"
+
+                });
+            });
+             </text>
+
+
+    }
+   @if (TempData["fail"] != null)  { <text>
+                $(document).ready(function () {
+
+                    swal.fire({
+                        title: "some error occured",
+                        text: "please try again",
+                        type: "error"
+
+                    });
+                });
+
+    </text>
+            }
+</script>
+
+    
+
+
+}     

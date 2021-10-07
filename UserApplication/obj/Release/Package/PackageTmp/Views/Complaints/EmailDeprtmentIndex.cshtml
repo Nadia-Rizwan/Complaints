@@ -1,0 +1,66 @@
+﻿@model IEnumerable<UserApplication.Models.EmailDepartments>
+
+
+@section styles {
+    <style>
+        td .btn-primary, .btn-danger {
+            padding: .175rem .55rem;
+        }
+
+        table {
+            table-layout: fixed;
+            font-size: 13px;
+        }
+    </style>
+}
+
+
+    <div>
+        <div class="animated fadeIn">
+            <div class="card">
+
+                <div class="card-header">
+                    <i class="fa fa-users"></i> فهرس
+                    <div class="card-header-actions">
+
+                    </div>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-striped  datatable">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"> Department Names </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Department_Names)
+                                        </td>
+
+                                        <td class="text-center">
+                                            <a class="btn btn-primary" title="Edit" href="@Url.Action("EditEmailDepartment", "Complaints", new { id = item.DId })">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+
+                                            @*@Html.ActionLink("Edit", "EditEmailDepartment", new { id = item.DId }) |*@
+                                            @*@Html.ActionLink("Details", "Details", new { id = item.DId }) |*@
+                                            @*@Html.ActionLink("Delete", "DeleteDepartments", new { id=item.DId })*@
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+            </div>
+    </div>

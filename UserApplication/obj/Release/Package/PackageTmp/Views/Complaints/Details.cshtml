@@ -1,0 +1,216 @@
+﻿@model UserApplication.Models.Complaint
+@{
+    ViewBag.Title = "ViewProfile";
+}
+<h2>Details</h2>
+
+<div>
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Profile</strong>
+                    </div>
+                    <div class="card-body">
+                       
+                            <dl class="dl-horizontal">
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ComplaintDate)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ComplaintDate)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PhoneNumber)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Email)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Name)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.EmirateID)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.EmirateID)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Area)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Area)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SchoolTransportService)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.SchoolTransportService)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.LogisticsService)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.LogisticsService)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TransportationRentalService)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.TransportationRentalService)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.AdministrativeNote)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.AdministrativeNote)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ExecutiveNote)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ExecutiveNote)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TechnicalNote)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.TechnicalNote)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Acknowledgment)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Acknowledgment)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Other)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Other)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OthersDiscription)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.OthersDiscription)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayName("نطاق الشكوى")
+                                </dt>
+
+                                <dd>
+                                    @ViewBag.selectedField
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayName("القناة/ الفئة المتأثر بالشكوى")
+                                </dt>
+
+                                <dd>
+                                    @ViewBag.SelectedChannel
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayName("مجال الشكوى")
+                                </dt>
+
+                                <dd>
+                                    @ViewBag.SelectedArea
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.IsExisiting)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.IsExisiting)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Normal)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Normal)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Urgent)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Urgent)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Complicated)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Complicated)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ChannelOfReceivingID)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ChannelOfReceivingID)
+                                </dd>
+
+
+                            </dl>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-sm btn-primary" href="@Url.Action("Index", "Complaints")">
+                                <i class="fa fa-dot-circle-o"></i> Back
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>   

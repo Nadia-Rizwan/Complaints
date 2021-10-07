@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#country").change(function () {
+
+            $("#State").empty();
+            $.ajax({
+
+
+                type: 'Post',
+                url: '@Url.Action("getCity")',
+                dataType: 'json',
+                data: { id: $("#country").val() },
+                success: function (states) {
+
+                    $.each(states, function (i, state) {
+                        $("#State").append('<option value="' + state.Value + '">' +
+                            state.Text + '</option>');
+                    });
+
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+<div style=" background-color:aqua; border-color:black; border:solid">
+
+
+    <div>
+        <b>Select Country</b>
+    </div>
+    <div>
+        @Html.DropDownList("country", ViewBag.country as List<SelectListItem>, new { style = "width: 200px;" })
+
+    </div>
+    <br />
+
+    <div>
+        <b>Select State</b>
+    </div>
+    <div>
+        @Html.DropDownList("State", new SelectList(string.Empty, "Value", "Text"), "--Select State--", new { style = "width:200px" })
+    </div>
+
+    <br />
+    <div>
+        <b> </b>
+    </div>
+   
+
+</div>  

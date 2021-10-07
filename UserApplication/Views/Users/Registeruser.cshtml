@@ -1,0 +1,154 @@
+﻿@model UserApplication.ViewModels.RoleViewModel
+
+@{
+    ViewBag.Title = "Register User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles {
+    <link href="~/Content/bootstrap-select.css" rel="stylesheet" />
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .select2-search__field, .select2-search__field2 {
+            height: 32px !important;
+            margin-top: -3px !important;
+            font-size: 12px !important;
+        }
+
+        .btn-light {
+            background-color: white !important;
+            color: dimgray !important;
+        }
+    </style>
+}
+<div>
+
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+
+
+
+                @using (Html.BeginForm("Registeruser", "Users", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h4>@ViewBag.Title</h4>
+                        </div>
+                        <div class="card-body">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-3 font-weight-bold" })
+                                <span style="color: #f86c6b;font-weight:bold;font-size:20px;">*</span>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @placeholder = "Enter First Name", tabindex = 1 })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-3 font-weight-bold" })
+                                <span style="color: #f86c6b;font-weight:bold;font-size:20px;">*</span>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @placeholder = "Enter Last Name", tabindex = 2 })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-3 font-weight-bold" })
+                                <span style="color: #f86c6b;font-weight:bold;font-size:20px;">*</span>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Enter User Name", tabindex = 3 })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-3 font-weight-bold" })
+                                <span style="color: #f86c6b;font-weight:bold;font-size:20px;">*</span>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter Email", tabindex = 4 })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-3 font-weight-bold" })
+                                <span style="color: #f86c6b;font-weight:bold;font-size:20px;">*</span>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Enter Password", tabindex = 5 })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-3 font-weight-bold" })
+                                <span style="color: #f86c6b;font-weight:bold;font-size:20px;">*</span>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password", tabindex = 6 })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.UserRole, htmlAttributes: new { @class = "control-label col-md-3 font-weight-bold" })
+                                <span style="color: #f86c6b;font-weight:bold;font-size:20px;">*</span>
+                                <div class="col-md-8">
+
+                                    @Html.DropDownListFor(model => model.UserRole, new SelectList(ViewBag.Roles, "Value", "Text"), "Select", htmlAttributes: new { @class = "form-control", tabindex = 7 })
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.CNIC, htmlAttributes: new { @class = "control-label col-md-3 font-weight-bold" })
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.CNIC, new { @class = "form-control", @placeholder = "Enter Cnic", tabindex = 8 })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-3 font-weight-bold" })
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @placeholder = "Enter PhoneNumber", tabindex = 9 })
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <button class="btn btn-md btn-primary mr-3" type="submit" tabindex="10">
+                                    <i class="fa fa-dot-circle-o"></i> Create
+                                </button>
+                                <a class="btn btn-md btn-primary ml-3" href="@Url.Action("Index", "Users")" tabindex="11">
+                                    <i class="fa fa-close"></i> Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="~/Scripts/bootstrap-select.min.js"></script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+
+
+}
+

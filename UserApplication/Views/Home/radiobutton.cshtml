@@ -1,0 +1,44 @@
+﻿@model UserApplication.Models.LanguageList
+
+@{
+    ViewBag.Title = "radiobutton";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>radiobutton</h2>
+
+@using (Html.BeginForm()) 
+{
+     <table>
+         @foreach (var m in Model.languages)
+         {
+
+             <tr>
+                 <td>
+                 
+                 @Html.RadioButton("Language",m.ID,m.IsChecked,new { @id=m.ID})
+                 </td>
+         <td>
+
+             @Html.Label(m.Progarmming_Language,new { @for=m.ID})
+         </td>
+         </tr>
+         }
+
+
+
+
+     </table>
+    
+  
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+  
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
